@@ -1,10 +1,12 @@
 import { fileURLToPath } from 'node:url'
 import { mergeConfig, defineConfig } from 'vitest/config'
+import svgLoader from 'vite-svg-loader'
 import viteConfig from './vite.config'
 
 export default mergeConfig(
   viteConfig,
   defineConfig({
+    plugins: [svgLoader()],
     test: {
       globals: true,
       environment: 'jsdom',

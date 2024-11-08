@@ -1,22 +1,15 @@
 <template>
   <header>
-    <div class="nav">
-      <router-link to="/">
-        Home
-      </router-link>
-    </div>
+    <TopNavBar />
   </header>
   <main>
     <router-view />
   </main>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import TopNavBar from './components/base/TopNavBar.vue'
 
-export default defineComponent({
-  name: 'App',
-})
 </script>
 
 <style lang="scss" scoped>
