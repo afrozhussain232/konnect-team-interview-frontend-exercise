@@ -2,7 +2,7 @@
   <div class="pagination">
     <button
       class="pagination-button"
-      :disabled="currentPage == 1"
+      :disabled="IsPrevDisabled"
       @click="handleGoToPrevPage"
     >
       <Prev />
@@ -52,24 +52,32 @@ const {
 
 const currentPage = ref(initialPage.value)
 
+// handle Page Change to Next
 const handleGotToNextPage = ()=> {
+  // Check if the current page is less than the total number of pages i.e the last page
   if (currentPage.value < Math.ceil(totalItems.value / itemsPerPage.value)) {
+    // Increment the current page
     currentPage.value++
   }
   emits('page-changed', currentPage.value)
 }
-
+// handle Page Change to Previous
 const handleGoToPrevPage = ()=> {
+  // Check if the current page is greater than 1 i.e the first page
   if (currentPage.value > 1) {
     currentPage.value--
   }
   emits('page-changed', currentPage.value)
 }
-
+// Check if the next button should be disabled
 const isNextDisabled = computed(()=>{
   return (currentPage.value * itemsPerPage.value) >= totalItems.value
 })
-
+// Check if the Prev button should be disabled
+const IsPrevDisabled = computed(()=>{
+  return currentPage.value === 1
+})
+// Get the range of items displayed on the page
 const getPageRange = computed(()=>{
   const start = (currentPage.value - 1) * itemsPerPage.value + 1
   const end = Math.min(currentPage.value * itemsPerPage.value, totalItems.value)

@@ -1,6 +1,12 @@
 <template>
   <div
-    v-if="service"
+    v-if="loading"
+    class="loading"
+  >
+    ...Loading Service Details
+  </div>
+  <div
+    v-else-if="service"
     class="service-details"
   >
     <div class="page-header">
@@ -58,7 +64,7 @@
         </p>
         <span class="version-type">
           <div class="version-type-pill">
-            HTTP
+            {{ service.type }}
           </div>
         </span>
         <div
@@ -83,6 +89,9 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    Service Not Found
+  </div>
 </template>
 <script lang="ts" setup>
 import { useServicesStore } from '@/stores/services'
@@ -90,12 +99,18 @@ import { useRoute } from 'vue-router'
 import {
   SERVICE_CATALOG_STATUS,
 } from '@/constants/serviceCatalog'
-import { onMounted ,computed,ref } from 'vue'
+import { computed,ref, watch } from 'vue'
 import UserAvatar from '../common/UserAvatar.vue'
 import Back from '@/assets/icons/ArrowBack.vue'
 import type { Service } from '@/types/services'
+import useServices from '@/composables/useServices'
+
 
 const route = useRoute()
+
+// FIXME: This is a temporary fix to get the service details, we are fetching the list of services again
+// Ideally, we should have separate API to get the service details
+const { loading } = useServices()
 
 const serviceStore = useServicesStore()
 const service = ref<Service | null>(null)
@@ -113,23 +128,27 @@ const getStatusMessage = computed(() => {
   }
   return StatusMessages[getStatusType.value]
 })
-
-
-
-onMounted(() => {
-  const serviceId = route.params.id
-  if (serviceId) {
-    const value = serviceStore.getServiceById(String(serviceId))
+watch(loading, (value) => {
+  if (!value) {
+    const value = serviceStore.getServiceById(String(route.params.id))
     if (value !== null && value !== undefined) {
       service.value = value
     }
-
   }
-
 })
+
+
 
 </script>
 <style lang="scss" scoped>
+.loading{
+  color: var(--font-color-light);
+  display: flex;
+  font-weight: 600;
+  margin: 3rem auto;
+  max-width: 1366px;
+  padding: 0 20px;
+}
 .service-details{
   display: flex;
   flex-direction: column;

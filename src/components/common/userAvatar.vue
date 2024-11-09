@@ -13,15 +13,16 @@
       v-else
       class="initials"
     >
-      <span>{{ getUserInitials }}</span>
+      {{ getUserInitials }}
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import type { User } from '@/types/user'
 import type { PropType } from 'vue'
+import { computed,toRefs } from 'vue'
 
-defineProps({
+const props = defineProps({
   user: {
     type:Object as PropType<User>,
     required:true,
@@ -32,10 +33,14 @@ defineProps({
   },
 })
 
-const getUserInitials = (user:User) => {
-  const names = user.name.split(' ')
-  return names.map(name => name[0]).join('')
-}
+const { user } = toRefs(props)
+// Get the initials of the user
+const getUserInitials = computed(() => {
+  const names = user.value.name.split(' ')
+  // Get the first letter of each name and join them,
+  // Truncate the initials to 2 characters and convert to uppercase
+  return names.map(name => name[0]).join('').slice(0,2).toUpperCase()
+})
 </script>
 <style lang="scss" scoped>
 
@@ -48,6 +53,18 @@ const getUserInitials = (user:User) => {
         height: 36px;
         object-fit: cover;
         width: 36px;
+    }
+    .initials{
+      align-items: center;
+      color: var(--font-color-light);
+      display: flex;
+      font-size: 1rem;
+      font-weight: 600;
+      height: 36px;
+      justify-content: center;
+      width: 36px;
+
+
     }
 }
 </style>

@@ -54,6 +54,102 @@ You have up to a week to complete the exercise, but we don't expect you to spend
 
 When it's ready, please send your recruiter a link to the source code in a GitHub repository (no Pull Requests).
 
+## Implementation Breif
+Below is small Breif of the changes/files that i have added.
+### Components
+- **Base/**
+  - Contains core layout components
+  - Examples: topbar, sidenav, etc.
+
+- **Common/**
+  - Houses reusable UI components
+  - Examples: buttons, pagination, modals, etc.
+
+- **ServiceCatalog/**
+  - Contains all service catalog related components
+
+### Constants
+Contains application-wide constant values
+- **Services/**
+  - Service types
+  - Service status definitions
+
+### Utils
+Houses utility/helper functions
+- Number formatting utilities
+- Date handling utilities
+
+### Assets/Styles
+- Base styles configuration
+- Typography setup
+
+## Technical Trade-offs
+
+### Service Details Page
+**Current Implementation:**
+- Details page relies on list endpoint
+- Requires refetching the complete list
+
+**Ideal Solution:**
+- Implement dedicated endpoint for service details
+- Reduce unnecessary data fetching
+
+### Icon Component Implementation
+**Current Setup:**
+- Each icon is a separate Vue component
+
+**Potential Improvement:**
+- Create a unified icon component
+- Implement dynamic icon imports based on name
+- Reduce bundle size and improve maintainability
+
+## UI/UX Improvement Suggestions
+
+### Search Placement
+**Current Issue:**
+- Search placement is too close to CTA
+- Unusual positioning
+
+**Recommendation:**
+- Move search below header
+- Align to right side
+- Improve visual hierarchy
+
+### Status Indicators
+**Current Issue:**
+- "In Progress" status for unconfigured items is misleading
+- Users might expect loading state
+
+**Recommendation:**
+- Replace with "Draft" or "Incomplete" status
+- Clearer user communication
+
+### Real-time Updates
+**Potential Improvements:**
+- Implement 5-minute polling interval
+- Consider WebSocket connection
+- Alternatively, use GraphQL subscriptions for real-time metric updates
+
+## API Payload Improvements
+
+### Status Management
+**Current:**
+- Separate keys for published and configured states
+
+**Recommendation:**
+Consolidate into single `status` field with values:
+- `published`
+- `saved`
+- `in_progress`
+
+### Field Naming
+**Current Issue:**
+- `developer` key is too specific
+
+**Recommendation:**
+- Rename to `user` for better consistency across the application
+
+
 ---
 
 ## Project Setup

@@ -5,8 +5,8 @@
 @import url("./setup/_animations.scss");
 
 #app{
-   height: 100%;
     display: flex;
     flex-direction: column;
+   height: 100%;
     overflow: auto;
 }

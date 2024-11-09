@@ -1,8 +1,8 @@
 .slide-left-to-right {
     @keyframes SlideLeftToRight {
         from {
-            transform: translateX(-10px);
             opacity: 0;
+            transform: translateX(-10px);
         }
         to {
             opacity: 1;
@@ -14,8 +14,8 @@
 .slide-right-to-left {
     @keyframes SlideRightToLeft {
         from {
-            transform: translateX(10px);
             opacity: 0;
+            transform: translateX(10px);
         }
         to {
             opacity: 1;
@@ -28,8 +28,8 @@
 .slide-bottom-to-top {
     @keyframes SlideBottomToTop {
         from {
-            transform: translateY(10px);
             opacity: 0;
+            transform: translateY(10px);
         }
         to {
             opacity: 1;
@@ -41,8 +41,8 @@
 .slide-top-to-bottom {
     @keyframes SlideBottomToTop {
         from {
-            transform: translateY(-10px);
             opacity: 0;
+            transform: translateY(-10px);
         }
         to {
             opacity: 1;
@@ -54,8 +54,8 @@
 .slide-top-to-bottom-exit {
     @keyframes SlideBottomToTopExit {
         from {
-            transform: translateY(0);
             opacity: 1;
+            transform: translateY(0);
         }
         to {
             opacity: 0;
@@ -68,8 +68,8 @@
 .scale-up {
     @keyframes ScaleUp {
         from {
-            transform: scale(0.9);
             opacity: 0;
+            transform: scale(0.9);
         }
         to {
             opacity: 1;
@@ -81,8 +81,8 @@
 
 
 .skeleton-loader {
-    position: relative;
     overflow: hidden;
+    position: relative;
 
     @keyframes load {
         from {
@@ -93,19 +93,19 @@
         }
     }
     &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        left: -150px;
-        top: 0;
-        height: 100%;
-        width: 150px;
+        animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         background: linear-gradient(
             to right,
             transparent 0%,
             #ebeeef 50%,
             transparent 100%
         );
-        animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        content: "";
+        display: block;
+        height: 100%;
+        left: -150px;
+        position: absolute;
+        top: 0;
+        width: 150px;
     }
 }

@@ -44,7 +44,7 @@
               </span>
             </div>
             <p class="published-date">
-              2 days ago
+              {{ relativeTime(version.updated_at) }}
             </p>
           </div>
         </div>
@@ -57,6 +57,7 @@ import Close from '@/assets/icons/ClearClose.vue'
 import UserAvatar from '../common/UserAvatar.vue'
 import type { PropType } from 'vue'
 import type { Version } from '@/types/services'
+import { relativeTime } from '@/utils/time'
 
 
 defineEmits(['close'])

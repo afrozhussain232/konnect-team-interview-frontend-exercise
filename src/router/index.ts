@@ -13,6 +13,9 @@ const router = createRouter({
       name: 'ServiceDetails',
       component: () => import('../views/ServiceDetailsPage.vue'),
     },
+    { path: '/:pathMatch(.*)*',
+      redirect: '/',
+    },
   ],
 })
 

@@ -3,6 +3,7 @@
     <ul
       v-if="services.length"
       class="catalog"
+      data-testid="service-catalog-listing"
     >
       <ListItem
         v-for="service in GetFilteredServices"
@@ -23,6 +24,7 @@
       </div>
     </div>
     <Pagination
+      v-if="services.length"
       :initial-page="1"
       :items-per-page="9"
       :total-items="services?.length"
@@ -48,11 +50,12 @@ const pageInfo = ref({
   currentPage: 1,
   itemsPerPage: 9,
 })
-
+// Handle Page Change
 const handlePageChanged = (page: number) => {
+  // Update the current page
   pageInfo.value.currentPage = page
 }
-
+// Get the filtered services based on the current page
 const GetFilteredServices = computed(() => {
   const start = (pageInfo.value.currentPage - 1) * pageInfo.value.itemsPerPage
   const end = pageInfo.value.currentPage * pageInfo.value.itemsPerPage
@@ -62,8 +65,8 @@ const GetFilteredServices = computed(() => {
 </script>
 <style scoped lang="scss">
 .catalog-listing-wrapper{
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding-bottom: 30px;
   row-gap: 20px;
@@ -75,11 +78,11 @@ const GetFilteredServices = computed(() => {
     row-gap: 40px;
 }
 .no-results{
-  flex: 1;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  height: 200px;
   justify-content: center;
-  align-items: center;
   row-gap: 10px;
   .title{
     font-size: 1.5rem;

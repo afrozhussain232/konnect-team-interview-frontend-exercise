@@ -5,7 +5,7 @@ export const formatNumber = (number: number) => {
   if (number < 1000000000) return `${(number / 1000000).toFixed(1)}m`
   return `${(number / 1000000000).toFixed(1)}b`
 }
-
+// Convert Decimal Number to percentage
 export const formatPercentage = (number: number) => {
   return `${(number * 100).toFixed(2)}%`
 }

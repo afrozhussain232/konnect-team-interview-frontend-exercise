@@ -12,9 +12,9 @@ import TopNavBar from './components/base/TopNavBar.vue'
 
 <style lang="scss" scoped>
 .container{
-  width: 100%;
   height: 100%;
   overflow: auto;
+  width: 100%;
 }
 
 </style>

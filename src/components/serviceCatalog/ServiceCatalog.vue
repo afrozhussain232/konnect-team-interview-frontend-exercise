@@ -54,7 +54,6 @@ const { services, searchQuery,loading } = useServices()
 
 <style lang="scss" scoped>
 .service-catalog {
-  height: 100%;
   display: flex;
   flex-direction: column;
   margin: 3rem auto;

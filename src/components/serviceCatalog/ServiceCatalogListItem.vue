@@ -1,6 +1,7 @@
 <template>
   <div
     class="service slide-top-to-bottom"
+    data-testid="service-catalog-item"
     @click="handleGoToService"
   >
     <div class="header">
@@ -124,12 +125,13 @@ const router = useRouter()
 
 const { service } = props
 
+// Get Status of the service based on the configuration
 const getStatusType = computed(()=>{
   if (service.published) return SERVICE_CATALOG_STATUS.PUBLISHED
   else if (service.configured) return SERVICE_CATALOG_STATUS.UNPUBLISHED
   else return SERVICE_CATALOG_STATUS.NOT_CONFIGURED
 })
-
+// Get the status message based on the status type
 const getStatusMessage = computed(() => {
   const StatusMessages = {
     [SERVICE_CATALOG_STATUS.PUBLISHED]: 'Published to Portal',
@@ -138,7 +140,7 @@ const getStatusMessage = computed(() => {
   }
   return StatusMessages[getStatusType.value]
 })
-
+// Get the status icon based on the status type
 const getStatusIcon = computed(() => {
   const StatusIcons = {
     [SERVICE_CATALOG_STATUS.PUBLISHED]: Check,
@@ -147,7 +149,7 @@ const getStatusIcon = computed(() => {
   }
   return StatusIcons[getStatusType.value]
 })
-
+// Get All the service metrics with formatted values
 const getServiceMetrics = computed(()=>{
   const metrics = {
     latency: service.metrics?.latency ? service.metrics?.latency + 'ms' : '',
@@ -157,7 +159,7 @@ const getServiceMetrics = computed(()=>{
   }
   return metrics
 })
-
+// Method to navigate to the service details page
 const handleGoToService = () => {
   router.push({
     name: 'ServiceDetails',
@@ -167,7 +169,7 @@ const handleGoToService = () => {
   })
 }
 
-
+// Get the published users
 const getPublishedUsers = ()=>{
   const users:User[] = []
 
@@ -193,6 +195,7 @@ const closeVersionsModal = () => {
 
 .service{
     background-color: white;
+    border: solid 1px transparent;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -200,6 +203,10 @@ const closeVersionsModal = () => {
     list-style: none;
     padding: 25px;
     row-gap: 15px;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        border: solid 1px var(--primary-color-light);
+    }
     .header{
         align-items: center;
         display: flex;

@@ -33,11 +33,11 @@ const props = withDefaults(defineProps<Props>(), {
   users: () => [],
   maxVisible: 2,
 })
-
+// Get the visible users based on the maxVisible prop
 const visibleUsers = computed<User[]>(() => {
   return props.users.slice(0, props.maxVisible)
 })
-
+// Get the Remaining users count
 const remainingUsers = computed(() => {
   return Math.max(props.users.length - props.maxVisible, 0)
 })

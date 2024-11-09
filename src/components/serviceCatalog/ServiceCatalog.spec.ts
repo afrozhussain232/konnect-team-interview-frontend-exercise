@@ -41,4 +41,14 @@ describe('ServiceCatalog', () => {
 
     expect(wrapper.findTestId('no-results').isVisible()).toBe(true)
   })
+  it('Displays Services when services returned from the API', async () => {
+    // Provide a custom `mockedResponses` response payload instead of using the default mocked response
+
+
+    const wrapper = mount(ServiceCatalog)
+
+    expect(wrapper.findTestId('service-catalog-listing').isVisible()).toBe(true)
+
+    expect(wrapper.findAllTestId('service-catalog-item').length).toBe(9)
+  })
 })

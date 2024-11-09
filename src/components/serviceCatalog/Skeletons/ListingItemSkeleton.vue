@@ -46,15 +46,15 @@
           justify-content: space-between;
 
           .service-status{
-              height: 1.3rem;
-              width: 200px;
-              background-color: var(--border-color-light);
               align-items: center;
+              background-color: var(--border-color-light);
               color: var(--font-color-light);
               column-gap: 5px;
               display: flex;
               font-size: 1.2rem;
               font-weight: 400;
+              height: 1.3rem;
+              width: 200px;
               .published{
                   color: var(--success-color);
               }
@@ -67,16 +67,15 @@
               }
           }
           .service-versions{
-              height: 1.5rem;
-              background-color: var(--border-color-light);
-              width: 70px;
               background-color: var(--secondary-color-light);
               border-radius: 25px;
               color: var(--secondary-color);
               cursor: pointer;
               font-size: 1.3rem;
               font-weight: 600;
+              height: 1.5rem;
               padding: 10px 15px;
+              width: 70px;
 
           }
       }
@@ -85,29 +84,29 @@
           flex-direction: column;
           row-gap: 10px;
           .service-name{
+              background-color: var(--border-color-light);
               color: var(--font-color);
               font-size: 2rem;
               font-weight: 600;
               height: 2.2rem;
               width: 70%;
-              background-color: var(--border-color-light);
           }
           .service-description{
+              background-color: var(--border-color-light);
               color: var(--font-color-light);
               font-size: 1.3rem;
               font-weight: 400;
-              line-height: 20px;
               height: 1.5rem;
+              line-height: 20px;
               width: 90%;
-              background-color: var(--border-color-light);
           }
       }
       .service-info{
+          background-color: var(--border-color-light);
           display: flex;
           flex: 1;
           font-family: "Inter", sans-serif;
           height: 50px;
-          background-color: var(--border-color-light);
 
           .unconfigured-service{
              align-items: flex-end;
