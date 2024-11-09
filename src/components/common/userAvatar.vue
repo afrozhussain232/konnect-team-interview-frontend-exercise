@@ -1,27 +1,53 @@
 <template>
-  <div class="user-avatar">
+  <div
+    class="user-avatar"
+    :style="{width:`${size}px`,height:`${size}px`}"
+  >
     <img
+      v-if="user.avatar"
       alt="User avatar"
       :src="user.avatar"
+      :style="{width:`${size}px`,height:`${size}px`}"
     >
+    <div
+      v-else
+      class="initials"
+    >
+      <span>{{ getUserInitials }}</span>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
+import type { User } from '@/types/user'
+import type { PropType } from 'vue'
+
 defineProps({
-  user: Object,
+  user: {
+    type:Object as PropType<User>,
+    required:true,
+  },
+  size:{
+    type:Number,
+    default:36,
+  },
 })
+
+const getUserInitials = (user:User) => {
+  const names = user.name.split(' ')
+  return names.map(name => name[0]).join('')
+}
 </script>
 <style lang="scss" scoped>
 
 .user-avatar{
-    width: 36px;
-    height: 36px;
     border-radius: 50%;
+    height: 36px;
     overflow: hidden;
+    width: 36px;
     img{
-        width: 36px;
         height: 36px;
         object-fit: cover;
+        width: 36px;
     }
 }
 </style>

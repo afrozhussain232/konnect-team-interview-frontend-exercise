@@ -9,10 +9,11 @@
  */
 
  html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
     height: 100%;
+    line-height: 1.15; /* 1 */
     overflow: hidden;
+    font-size: 10px;
+    -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /* Sections
@@ -23,10 +24,10 @@
    */
 
 body {
-    margin: 0;
-    height: 100%;
     background-color: var(--background-color);
-    overflow: auto;
+    height: 100%;
+    font-size: 1.6rem;
+    margin: 0;
 }
 
 /**
@@ -44,8 +45,8 @@ main {
 
 h1 {
     font-size: 2em;
-    margin: 0.67em 0;
     font-weight: 700;
+    margin: 0.67em 0;
 }
 h2 {
     font-size: 1.75em;
@@ -83,14 +84,14 @@ hr {
    */
 
 pre {
-    font-family: monospace, monospace; /* 1 */
+    font-family: monospace; /* 1 */
     font-size: 1em; /* 2 */
 }
 
 
 ul{
-    padding: 0px;
     margin: 0px;
+    padding: 0px;
 }
 
 /* Text-level semantics
@@ -132,7 +133,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace; /* 1 */
+    font-family: monospace; /* 1 */
     font-size: 1em; /* 2 */
 }
 
@@ -189,12 +190,12 @@ input,
 optgroup,
 select,
 textarea {
+    border: none;
     font-family: inherit; /* 1 */
     font-size: 100%; /* 1 */
     line-height: 1.15; /* 1 */
     margin: 0; /* 2 */
     outline: none;
-    border: none;
 }
 
 /**

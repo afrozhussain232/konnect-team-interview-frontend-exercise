@@ -1,4 +1,12 @@
 @import url("./setup/_fonts.scss");
 @import url("./setup/_typography.scss");
 @import url("./setup/_normalize.scss");
-@import url("./setup/_colors.scss")
+@import url("./setup/_colors.scss");
+@import url("./setup/_animations.scss");
+
+#app{
+   height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}

@@ -1,12 +1,13 @@
+
 body {
-    font-size: 13px;
-    letter-spacing: 0.01em;
-    font-weight: 400;
-    line-height: 1.5em;
-    font-family: "Inter", sans-serif;
     color: var(--color-font);
+    font-family: "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+
 
     h1,
     h2,
@@ -17,16 +18,16 @@ body {
     p,
     pre,
     label {
-        padding: 0;
-        margin: 0;
-        font-weight: 400;
         color: var(--color-font);
         font-family: "Inter", sans-serif;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
     }
 
     a {
-        text-decoration: none;
         outline: none;
+        text-decoration: none;
         &:focus {
             outline: none;
         }
@@ -38,9 +39,9 @@ body {
 }
 
 .ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
     font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
     // text-overflow: ellipsis;
     &:not(:hover) {
         text-overflow: ellipsis;
@@ -50,13 +51,13 @@ body {
 .marquee {
     &:hover {
         span {
-            display: inline-block;
-            animation-name: scroll-text;
-            animation-duration: 15s;
-            animation-timing-function: linear;
             animation-delay: 0s;
-            animation-iteration-count: infinite;
             animation-direction: normal;
+            animation-duration: 15s;
+            animation-iteration-count: infinite;
+            animation-name: scroll-text;
+            animation-timing-function: linear;
+            display: inline-block;
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
 

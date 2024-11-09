@@ -21,18 +21,18 @@ defineProps({
 </script>
 <style scoped lang="scss">
 .button {
+  align-items: center;
   background-color: var(--primary-color);
   border: none;
+  border-radius: 25px;
   color: white;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 600;
+  justify-content: center;
   padding: 15px 24px;
   text-align: center;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 1.6rem;
   &.primary {
     background-color: var(--primary-color);
   }

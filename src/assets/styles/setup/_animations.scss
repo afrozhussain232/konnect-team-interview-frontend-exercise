@@ -1,0 +1,111 @@
+.slide-left-to-right {
+    @keyframes SlideLeftToRight {
+        from {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    animation: SlideLeftToRight 0.25s ease-in;
+}
+.slide-right-to-left {
+    @keyframes SlideRightToLeft {
+        from {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    animation: SlideRightToLeft 0.25s ease-in;
+}
+
+.slide-bottom-to-top {
+    @keyframes SlideBottomToTop {
+        from {
+            transform: translateY(10px);
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    animation: SlideBottomToTop 0.25s ease-in;
+}
+.slide-top-to-bottom {
+    @keyframes SlideBottomToTop {
+        from {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    animation: SlideBottomToTop 0.25s ease-in;
+}
+.slide-top-to-bottom-exit {
+    @keyframes SlideBottomToTopExit {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    }
+    animation: SlideBottomToTopExit 0.25s ease-in;
+}
+
+.scale-up {
+    @keyframes ScaleUp {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    animation: ScaleUp 0.25s ease-in;
+}
+
+
+.skeleton-loader {
+    position: relative;
+    overflow: hidden;
+
+    @keyframes load {
+        from {
+            left: -150px;
+        }
+        to {
+            left: 100%;
+        }
+    }
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -150px;
+        top: 0;
+        height: 100%;
+        width: 150px;
+        background: linear-gradient(
+            to right,
+            transparent 0%,
+            #ebeeef 50%,
+            transparent 100%
+        );
+        animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+}

@@ -1,27 +1,45 @@
 <template>
   <div class="user-avatar-group">
     <div
+      v-if="remainingUsers > 0"
       class="group-item"
-      :style="{zIndex:users?.length}"
+      :style="{zIndex:visibleUsers?.length + 1}"
     >
       <div class="more-avatar">
-        <span>+{{ users?.length - 2 }}</span>
+        +{{ remainingUsers }}
       </div>
     </div>
     <UserAvatar
-      v-for="(user,index) in users?.splice(0, 2)"
+      v-for="(user,index) in visibleUsers"
       :key="user.id"
       class="group-item"
-      :style="{ zIndex: users.length - index }"
-
+      :style="{ zIndex: visibleUsers.length - index }"
       :user="user"
     />
   </div>
 </template>
+
 <script lang="ts" setup>
-import UserAvatar from './userAvatar.vue'
-defineProps({
-  users: Array,
+import { computed } from 'vue'
+import UserAvatar from './UserAvatar.vue'
+import type { User } from '@/types/user'
+
+interface Props {
+  users: User[]
+  maxVisible?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  users: () => [],
+  maxVisible: 2,
+})
+
+const visibleUsers = computed<User[]>(() => {
+  return props.users.slice(0, props.maxVisible)
+})
+
+const remainingUsers = computed(() => {
+  return Math.max(props.users.length - props.maxVisible, 0)
 })
 </script>
 
@@ -32,16 +50,21 @@ defineProps({
         margin-left: 0px;
     }
     .group-item{
-        margin-left: -10px;
+        align-items: center;
+        background-color: var(--background-color);
+        border: solid 2px white;
+        border-radius: 50%;
+        display: flex;
+        height: 36px;
+        justify-content: center;
+        margin-left: -15px;
         overflow: hidden;
-
+        width: 36px;
         .more-avatar{
-            height: 36px;
-            width: 36px;
-            border-radius: 50%;
-            background-color: var(--background-color);
-            border: solid 2px white;
-
+          color: var(--font-color-light);
+          font-size: 1.2rem;
+          font-weight: 600;
+          opacity: 0.8;
         }
     }
 }

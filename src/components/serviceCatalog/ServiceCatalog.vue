@@ -16,7 +16,6 @@
           <Search />
           <input
             v-model="searchQuery"
-
             data-testid="search-input"
             placeholder="Search services"
           >
@@ -30,40 +29,43 @@
         </Button>
       </div>
     </div>
-    <Listing :services="services" />
+    <ListingSkeleton v-if="loading" />
+    <Listing
+      v-else
+      :services="services"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, ref } from 'vue'
 import useServices from '@/composables/useServices'
-import Button from '../common/button.vue'
-import Add from '@/assets/icons/add.vue'
-import Search from '@/assets/icons/search.vue'
+import Button from '@/components/common/BaseButton.vue'
+import Add from '@/assets/icons/NewAdd.vue'
+import Search from '@/assets/icons/InputSearch.vue'
 import Listing from './ServiceCatalogListing.vue'
+import ListingSkeleton from './Skeletons/ListingSkeleton.vue'
 
 // Import services from the composable
-const { services, loading } = useServices()
+const { services, searchQuery,loading } = useServices()
 
-// Set the search string to a Vue ref
-const searchQuery = ref('')
 
 
 </script>
 
 <style lang="scss" scoped>
 .service-catalog {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   margin: 3rem auto;
   max-width: 1366px;
   padding: 0 20px;
-  display: flex;
-  flex-direction: column;
   row-gap: 20px;
 
   .header{
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
     .header-left{
       display: flex;
@@ -74,34 +76,33 @@ const searchQuery = ref('')
         font-weight: 700;
       }
       p{
+        color: var(--font-color-light);
         font-size: 1.5rem;
         font-weight: 400;
-        color: var(--font-color-light);
         a{
           color:var(--primary-color-dark)
         }
       }
     }
     .header-right{
-      display: flex;
       column-gap: 24px;
+      display: flex;
       .search-input {
-        padding: 8px 16px;
-        background-color: white;
-        display: flex;
         align-items: center;
+        background-color: white;
+       border: solid 1px var(--border-color);
         border-radius: 4px;
         column-gap: 5px;
-       border: solid 1px var(--border-color);
+        display: flex;
+        padding: 8px 16px;
        input{
         font-size: 1.4rem;
        }
       }
       .button-text{
-        display: flex;
         align-items: center;
-        display: flex;
         column-gap: 5px;
+        display: flex;
       }
     }
 

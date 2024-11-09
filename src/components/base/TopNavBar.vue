@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <div class="navbar">
     <div class="navbar-left">
       <Logo />
     </div>
@@ -25,50 +25,50 @@
         Afroz hussain
       </div>
     </div>
-  </nav>
+  </div>
 </template>
 <script lang="ts" setup>
-import Logo from '@/assets/icons/logo.vue'
-import Settings from '@/assets/icons/settings.vue'
-import Organization from '@/assets/icons/organisation.vue'
-import UserProfile from '@/assets/icons/userProfile.vue'
+import Logo from '@/assets/icons/KongLogo.vue'
+import Settings from '@/assets/icons/OrgSettings.vue'
+import Organization from '@/assets/icons/GroupOrg.vue'
+import UserProfile from '@/assets/icons/UserProfile.vue'
 </script>
 <style lang="scss" scoped>
 .navbar{
-  height: 70px;
+  align-items: center;
   background: linear-gradient(180deg, #09224F 0%, #073382 100%);
   display: flex;
-  align-items: center;
+  height: 70px;
   justify-content: space-between;
 
   .navbar-right{
-    display: flex;
     align-items: center;
     column-gap: 20px;
+    display: flex;
     .nav-links{
-      display: flex;
       column-gap: 15px;
+      display: flex;
 
       .nav-item{
+        align-items: center;
         color: var(--font-color-white);
+        column-gap: 10px;
+        display: flex;
         font-size: 1.5rem;
         font-weight: 600;
         text-align: left;
-        display: flex;
-        align-items: center;
-        column-gap: 10px;
       }
     }
     .user-profile{
-      height: 70px;
-      background-color: #072863;
-      display: flex;
       align-items: center;
+      background-color: #072863;
       color: var(--font-color-white);
-      padding: 0px 20px;
       column-gap: 10px;
-      font-weight: 500;
+      display: flex;
       font-size: 1.5rem;
+      font-weight: 500;
+      height: 70px;
+      padding: 0px 20px;
     }
   }
 
