@@ -76,6 +76,12 @@ const GetFilteredServices = computed(() => {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 40px;
+    @media screen and (max-width: 1280px) {
+      grid-template-columns: 1fr 1fr;
+    }
+   @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+   }
 }
 .no-results{
   align-items: center;

@@ -58,6 +58,9 @@ import UserProfile from '@/assets/icons/UserProfile.vue'
         font-weight: 600;
         text-align: left;
       }
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
     .user-profile{
       align-items: center;

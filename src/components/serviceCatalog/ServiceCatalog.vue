@@ -66,6 +66,11 @@ const { services, searchQuery,loading } = useServices()
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 20px;
+    }
     .header-left{
       display: flex;
       flex-direction: column;
@@ -102,6 +107,11 @@ const { services, searchQuery,loading } = useServices()
         align-items: center;
         column-gap: 5px;
         display: flex;
+      }
+      @media screen and (max-width: 1024px) {
+        flex-direction: column;
+        justify-items: flex-start;
+        row-gap: 20px;
       }
     }
 
